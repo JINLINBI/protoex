@@ -1,0 +1,98 @@
+{
+	"name": "protoex",
+	"displayName": "protoex",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.47.0"
+	},
+	"publisher": "jinlinbi",
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:protoex.exGameMessage",
+		"onCommand:protoex.exErrorCode",
+		"onCommand:protoex.exLuaHandle"
+	],
+	"icon": "images/protoex.png",
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "protoex.exErrorCode",
+				"title": "exErrorCode",
+				"icon": {
+					"light": "./images/error_code.png",
+					"dark": "./images/error_code.png"
+				}
+			},
+			{
+				"command": "protoex.exGameMessage",
+				"title": "exGameMessage",
+				"icon": {
+					"light": "./images/exchange.png",
+					"dark": "./images/exchange.png"
+				}
+			},
+			{
+				"command": "protoex.exLuaHandle",
+				"title": "exLuaHandle",
+				"icon": {
+					"light": "./images/lua.png",
+					"dark": "./images/lua.png"
+				}
+			}
+		]
+		,
+		"menus": {
+			"editor/title": [{
+				"when": "resourceLangId == proto3 && resourceFilename == game_cmd.proto",
+				"command": "protoex.exGameMessage",
+				"group": "navigation"
+			},
+			{
+				"when": "resourceLangId == proto3 && resourceFilename == game_cmd.proto",
+				"command": "protoex.exLuaHandle",
+				"group": "navigation"
+			},
+			{
+				"when": "resourceLangId == proto3 && resourceFilename == error_code.proto",
+				"command": "protoex.exErrorCode",
+				"group": "navigation"
+			}]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "protoex",
+			"properties": {
+				"protoex.message_proto_path": {
+					"type": "string",
+					"default": "/protocol/game_message.proto",
+					"description": "转换cmd协议后，自动打开的路径文件"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.47.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
+}
