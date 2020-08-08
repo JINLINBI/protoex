@@ -23,24 +23,24 @@
 				"command": "protoex.exErrorCode",
 				"title": "exErrorCode",
 				"icon": {
-					"light": "./images/error_code.png",
-					"dark": "./images/error_code.png"
+					"light": "./images/error_light.svg",
+					"dark": "./images/error_dark.svg"
 				}
 			},
 			{
 				"command": "protoex.exGameMessage",
 				"title": "exGameMessage",
 				"icon": {
-					"light": "./images/exchange.png",
-					"dark": "./images/exchange.png"
+					"light": "./images/exchange_light.svg",
+					"dark": "./images/exchange_dark.svg"
 				}
 			},
 			{
 				"command": "protoex.exLuaHandle",
 				"title": "exLuaHandle",
 				"icon": {
-					"light": "./images/lua.png",
-					"dark": "./images/lua.png"
+					"light": "./images/lua_light.svg",
+					"dark": "./images/lua_dark.svg"
 				}
 			}
 		],

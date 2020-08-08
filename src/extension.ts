@@ -67,22 +67,24 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// 直接多行一次替换有点问题，后面再试试，现在先分开行替换
 		let doc = "";
+		let handle_count = 0;
 		for (let line of lines) {
 			let new_line = line?.replace(/\D*(\d*);\s*\/\/ (.*)/, "$1\t$2");
 			if (new_line === line) {
 				continue;
 			}
+			handle_count += 1;
 			doc += new_line;
 		}
 
-		if (doc.search(/\t/) <= 0) {
+		if (handle_count === 0) {
 			vscode.window.showWarningMessage("请框选需要转换的 错误码 再点击转换代码!");
 			return;
 		}
 		
 		// 复制到粘贴板
 		vscode.env.clipboard.writeText(doc);
-		vscode.window.showInformationMessage("成功生成" + lines.length + "个错误码文本，请粘贴到合适位置！");
+		vscode.window.showInformationMessage("成功生成" + handle_count + "个错误码文本，请粘贴到合适位置！");
 	});
 
 
